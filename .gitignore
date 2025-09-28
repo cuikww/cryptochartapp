@@ -1,0 +1,22 @@
+# File hasil build dari Maven
+/target/
+
+# Log files
+*.log
+*.log.*
+
+# File konfigurasi IDE (VS Code, IntelliJ, Eclipse)
+.vscode/
+.idea/
+.project
+.classpath
+.settings/
+*.iml
+*.iws
+
+# File sistem operasi (macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# File gambar chart yang di-download (opsional, tapi disarankan)
+chart-*.png
