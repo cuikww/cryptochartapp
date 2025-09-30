@@ -9,7 +9,7 @@ import java.net.http.HttpResponse;
 public class CoinGeckoApiService {
 
     private final HttpClient client = HttpClient.newHttpClient();
-    private static final String API_URL_FORMAT = "https://api.coingecko.com/api/v3/coins/%s/market_chart?vs_currency=usd&days=14&interval=daily";
+    private static final String API_URL_FORMAT = "https://api.coingecko.com/api/v3/coins/%s/market_chart?vs_currency=usd&days=30&interval=daily";
 
     public String fetchPriceHistory(String cryptoId) throws IOException, InterruptedException {
         String apiUrl = String.format(API_URL_FORMAT, cryptoId);
