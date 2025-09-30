@@ -45,7 +45,7 @@ public class MainView extends VBox {
         yAxis.setLabel("Harga (USD)");
 
         lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.setTitle("Harga Kripto (14 Hari Terakhir)");
+        lineChart.setTitle("Harga Kripto");
         lineChart.setAnimated(false);
         lineChart.setLegendVisible(false);
 

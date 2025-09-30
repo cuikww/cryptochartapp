@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ChartDataParser {
 
@@ -13,8 +15,7 @@ public class ChartDataParser {
         JSONObject jsonObject = new JSONObject(jsonResponse);
         JSONArray prices = jsonObject.getJSONArray("prices");
 
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName(cryptoId.substring(0, 1).toUpperCase() + cryptoId.substring(1));
+        Map<String, Number> dailyData = new LinkedHashMap<>();  
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
         for (int i = 0; i < prices.length(); i++) {
@@ -22,7 +23,14 @@ public class ChartDataParser {
             long timestamp = pricePoint.getLong(0);
             double price = pricePoint.getDouble(1);
             String date = sdf.format(new Date(timestamp));
-            series.getData().add(new XYChart.Data<>(date, price));
+            dailyData.put(date, price);  
+        }
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName(cryptoId.substring(0, 1).toUpperCase() + cryptoId.substring(1));
+
+        for (Map.Entry<String, Number> entry : dailyData.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
         return series;
     }
