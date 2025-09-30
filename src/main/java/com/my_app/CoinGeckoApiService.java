@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class CoinGeckoApiService {
 
     private final HttpClient client = HttpClient.newHttpClient();
-    private static final String API_URL_FORMAT = "https://api.coingecko.com/api/v3/coins/%s/market_chart?vs_currency=usd&days=14&interval=daily";
+    private static final String API_URL_FORMAT = "https://api.coingecko.com/api/v3/coins/%s/market_chart?vs_currency=%s&days=%s&interval=daily";
 
     public String fetchPriceHistory(String cryptoId, String currency, String days) throws IOException, InterruptedException {
         String apiUrl = String.format(API_URL_FORMAT, cryptoId, currency, days);
